@@ -1,0 +1,23 @@
+The following CSS code snippet demonstrates an uncommon issue where the use of the `:focus-visible` pseudo-class interacts unexpectedly with a custom checkbox.  The checkbox should only have a visible outline when focused using the keyboard, not a mouse click. However, the outline may unexpectedly appear on both keyboard and mouse focus. This is due to the focus-visible pseudo-class not always reliably working across browsers or when combined with certain CSS properties or Javascript interactions.  In the example, using `outline: 2px solid red` instead of `outline: none` on the checkbox will highlight the issue more clearly. 
+
+```css
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  outline: none; /* Changing this to 'outline: 2px solid red' will show the issue more visibly */
+}
+
+.checkbox:checked {
+  background-color: #007bff;
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid blue; 
+}
+```
