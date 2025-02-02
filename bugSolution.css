@@ -1,0 +1,35 @@
+While a complete fix may not be possible due to browser inconsistencies, several strategies can be tried to improve the behavior of :focus-visible with custom checkboxes.  Here are a few approaches to consider.  Note that none of them guarantee perfect cross-browser consistency. The best approach may involve a combination of techniques or a more involved JavaScript solution.
+
+```css
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  outline: none;
+}
+
+.checkbox:checked {
+  background-color: #007bff;
+}
+
+/* Attempt 1: More specific styling */
+.checkbox:focus-visible:not(:focus):not(:active) { /* try to avoid mouse focus styles */
+  outline: 2px solid blue;
+}
+
+/* Attempt 2: Adding a small delay (Might help in certain cases due to JS events interfering)*/
+.checkbox:focus-visible {
+  transition: outline-color 0.1s ease-in-out; /* add transition */
+  outline: 2px solid blue; 
+}
+
+/* Attempt 3 (JavaScript): A JavaScript based solution that checks for keyboard focus is often more reliable, but adds complexity.  This would require additional JavaScript code to handle the focus event. */
+
+```
+
+Remember to test thoroughly across different browsers to assess the effectiveness of each technique.
